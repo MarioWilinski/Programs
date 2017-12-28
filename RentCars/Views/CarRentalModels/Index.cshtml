@@ -1,14 +1,11 @@
-﻿@model IEnumerable<RentCars.Models.CarModel>
+﻿@model IEnumerable<RentCars.Models.CarRentalModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index of cars</h2>
+<h2>Index of rentals</h2>
 
-<p>
-    @Html.ActionLink("Create New Car", "Create")
-</p>
 
 <div class="table-responsive">
     <table class="table table-bordered table-condensed table-striped table-hover sortable">
@@ -22,27 +19,29 @@
         {
             <thead>
                 <tr class="danger">
+                    <th data-defaultsign="AZ">Name</th>
+                    <th data-defaultsign="AZ">Surname</th>
                     <th data-defaultsign="AZ">Brand</th>
                     <th data-defaultsign="AZ">Model</th>
                     <th data-defaultsign="_19">Production year</th>
                     <th data-defaultsign="AZ">Colour</th>
-                    <th data-defaultsort="disabled"></th>
+                    <th data-defaultsign="_19">Rate</th>
                 </tr>
             </thead>
             foreach (var item in Model)
             {
             <tr>
-                <td>@item.Brand</td>
-                <td>@item.Model</td>
-                <td>@item.ProductionYear</td>
-                <td>@item.Colour</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CarId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CarId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CarId })
-                </td>
+                <td>@item.Customers.CustomerName</td>
+                <td>@item.Customers.CustomerSurname</td>
+                <td>@item.Cars.Brand</td>
+                <td>@item.Cars.Model</td>
+                <td>@item.Cars.ProductionYear</td>
+                <td>@item.Cars.Colour</td>
+                <td>@item.CarRentalRate</td>
             </tr>
             }
         }
     </table>
 </div>
+
+

@@ -17,9 +17,6 @@ namespace RentCars.Models
         [ForeignKey("Cars")]
         public int CarId { get; set; }
 
-        public DateTime CarRentalDateFrom { get; set; }
-        public DateTime CarRentalDateTo { get; set; }
-
         public decimal CarRentalRate { get; set; }
 
         public virtual CarModel Cars { get; set; }

@@ -7,7 +7,6 @@
 <h2>Details</h2>
 
 <div>
-    <h4>CarModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,6 +42,40 @@
         </dd>
 
     </dl>
+</div>
+<div style="border:1px solid rgb(128, 128, 128);padding:15px;margin-top:15px">
+    <h4>Car rentals history</h4>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-striped table-hover sortable">
+            @if (Model.CarRentals.Count() == 0)
+            {
+                <tr>
+                    <td colspan="10">No Record's found.</td>
+                </tr>
+            }
+            else
+            {
+                <thead>
+                    <tr class="danger">
+                        <th data-defaultsign="AZ">Customer name</th>
+                        <th data-defaultsign="AZ">Customer surname</th>
+                        <th data-defaultsign="_19">Rate</th>
+                    </tr>
+                </thead>
+                foreach (var item in Model.CarRentals)
+                {
+                    <tr>
+
+                        <td>@item.Customers.CustomerName</td>
+                        <td>@item.Customers.CustomerSurname</td>
+                        <td>@item.CarRentalRate</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CarId }) |

@@ -1,0 +1,105 @@
+﻿@model RentCars.Models.CustomerModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Steet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Steet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coutry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coutry)
+        </dd>
+
+    </dl>
+</div>
+<div style="border:1px solid rgb(128, 128, 128);padding:15px;margin-top:15px">
+    <h4>Car rentals history</h4>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-striped table-hover sortable">
+            @if (Model.CarRentals.Count() == 0)
+            {
+                <tr>
+                    <td colspan="10">No Record's found.</td>
+                </tr>
+            }
+            else
+            {
+                <thead>
+                    <tr class="danger">
+                        <th data-defaultsign="_19">Rate</th>
+                        <th data-defaultsign="AZ">Car brand</th>
+                        <th data-defaultsign="AZ">Car model</th>
+                        <th data-defaultsign="_19">Production year</th>
+                        <th data-defaultsign="AZ">Colour</th>
+                    </tr>
+                </thead>
+                foreach (var item in Model.CarRentals)
+                {
+                <tr>
+
+                    <td>@item.CarRentalRate</td>
+                    <td>@item.Cars.Brand</td>
+                    <td>@item.Cars.Model</td>
+                    <td>@item.Cars.ProductionYear</td>
+                    <td>@item.Cars.Colour</td>
+                </tr>
+                }
+            }
+        </table>
+    </div>
+
+</div>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
